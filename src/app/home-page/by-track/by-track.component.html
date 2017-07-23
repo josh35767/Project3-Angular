@@ -1,0 +1,20 @@
+<div class="inner">
+
+  <header>
+    <h2>
+      Find Your Song
+    <br>
+      <small>By Track/Artist</small>
+    </h2>
+  </header>
+
+  <p> Type in the artist, the track, or both!</p>
+  <button (click)="changeSearch()" class="button swap scrolly" > Or Search by Lyrics... </button>
+  <input [(ngModel)]="userInput.track" placeholder="Track Name" type="text" name="" value="" class='search'>
+  <input [(ngModel)]="userInput.artist" placeholder="Artist Name" type="text" name="" value="" class='search'>
+  <footer>
+    <ul class="buttons vertical">
+      <li><a href="#main" id="search-btn" (click)="findSongByTrack(userInput)" class="button fit scrolly">Search</a></li>
+    </ul>
+  </footer>
+</div>

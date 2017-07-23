@@ -1,0 +1,37 @@
+
+	<!-- Banner -->
+	<section id="banner">
+
+
+		<app-by-lyric *ngIf="display === 'lyricSearch'" (onSwap)="changeSearch($event)" (onSearch)="displayResults($event)"></app-by-lyric>
+		<app-by-track *ngIf="display === 'trackSearch'" (onSwap)="changeSearch($event)" (onSearch)="displayResults($event)"></app-by-track>
+
+	</section>
+
+	<!-- Main -->
+	<article id="main">
+
+		<header class="special container">
+			<span class="icon fa-music"></span>
+			<h2>Your Results </h2>
+			<h3 *ngIf="newList.length <= 0"> --- No Songs Found --- </h3>
+
+			<masonry [useImagesLoaded]="true" [options]="myOptions" data-masonry='{ "horizontalOrder": true}' e>
+
+				<masonry-brick class="brick grid-item" *ngFor="let oneSong of newList">
+					<li class="song-info">
+						<div class="song-text">
+							<h3> "{{ oneSong.track.track_name}}" </h3>
+							<h4> -{{oneSong.track.artist_name}} </h4>
+							<!-- <h4 *ngIf="oneSong.track.primary_genres.music_genre_list.length > 0"> {{oneSong.track.primary_genres.music_genre_list[0].music_genre.music_genre_name}} </h4> -->
+
+							<a [href]="oneSong.track.track_share_url" target="_blank"> Lyrics </a><br>
+							<a class='youtubeLink' href="https://www.youtube.com/results?search_query={{ oneSong.track.track_name}} by {{oneSong.track.artist_name}}" target="_blank"> Find on Youtube </a><br>
+							<button class='button'> Add to Favorites </button>
+						</div>
+					</li>
+				</masonry-brick>
+			</masonry>
+
+		</header>
+	</article>

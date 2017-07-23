@@ -1,0 +1,26 @@
+.button {
+  margin-top: 10px;
+}
+
+#main {
+    padding-top: 3em !important;
+}
+
+@media (max-width: 550px) {
+  .grid-item {
+    width: 100%;
+  }
+}
+
+@media (min-width: 550px) and (max-width: 900px) {
+  .grid-item {
+    width: 50%;
+  }
+}
+
+
+@media (min-width: 900px) and (max-width: 1200px) {
+  .grid-item {
+    width: 33%;
+  }
+}
