@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from './services/api-service.service';
-// import { MasonryModule, MasonryOptions } from 'angular2-masonry';
+import { AuthServicesService } from './services/auth-services.service';
+
 import 'rxjs/add/operator/map'
 
 @Component({
@@ -10,26 +11,39 @@ import 'rxjs/add/operator/map'
   providers: [ ApiServiceService ]
 })
 export class AppComponent {
-  listOfSongs: Array<any> = [];
-  newList;
+  isLoggedIn: boolean = false;
+  userInfo = {};
 
   title = 'app';
   searchTerm: string;
 
-  constructor(private api: ApiServiceService) {}
+  constructor(
+    private api: ApiServiceService,
+    private auth: AuthServicesService
+  ) {}
 
-  findSongByMiddle(userInput) {
-    this.api.findSongMiddle(userInput).subscribe(
-      (result) => {
-        this.newList = JSON.parse(result).message.body.track_list;
-        console.log(JSON.parse(result).message.body.track_list)
-      }
-    )
+  ngOnInit() {
+
   }
 
-//   public myOptions: MasonryOptions = {
-//     itemSelector: '.grid-item',
-//     columnWidth: '.grid-item',
-//     percentPosition: true
-// };
+  logout() {
+    this.auth.logout()
+      .then(() => {
+        console.log("Log out successful!")
+      });
+  }
+
+  checklogin() {
+    this.auth.checklogin()
+      .then((userInfo) => {
+        this.isLoggedIn = true;
+        alert(userInfo);
+        this.userInfo = userInfo;
+      })
+      .catch((err) => {
+        this.isLoggedIn = false;
+        alert("Not Logged In")
+      })
+  }
+
 }

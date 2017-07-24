@@ -1,0 +1,18 @@
+.wrapper.style4 {
+    background: #fff;
+    color: inherit;
+    padding: 2em;
+    -webkit-box-shadow: 3px 3px 18px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 3px 3px 18px 0px rgba(0,0,0,0.4);
+    box-shadow: 3px 3px 18px 0px rgba(0,0,0,0.4);
+}
+
+h2 {
+  text-decoration: underline;
+  margin-bottom: 0.5em;
+}
+
+header.special {
+    padding-top: 5.5em;
+    margin-bottom: 1em;
+}

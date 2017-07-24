@@ -2394,9 +2394,6 @@
 
 	#banner {
 		background-attachment: scroll, scroll, scroll, fixed;
-		background-color: #645862;
-		/*background-image: url("images/light-bl.svg"), url("images/light-br.svg"), url("images/overlay.png"), url("../../images/banner.jpg");
-		background-position: bottom left, bottom right, top left, top center;*/
 		background-image:  url("images/musicbgtwo.jpg");
 		background-repeat: no-repeat, no-repeat, repeat, no-repeat;
 		background-position: center center;
@@ -2405,6 +2402,11 @@
 		cursor: default;
 		padding: 6em 0;
 		text-align: center;
+	}
+
+	.home-banner {
+		background-image:  url("images/homebanner.jpeg") !important;
+
 	}
 
 		#banner .inner {

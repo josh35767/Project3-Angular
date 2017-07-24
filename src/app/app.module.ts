@@ -7,18 +7,27 @@ import { MasonryModule } from 'angular2-masonry';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiServiceService } from './services/api-service.service';
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { ResultItemsComponent } from './home-page/results-list/result-items/result-items.component';
-import { ByLyricComponent } from './home-page/by-lyric/by-lyric.component';
-import { ByTrackComponent } from './home-page/by-track/by-track.component';
+import { SearchComponent } from './search/search.component';
+import { ResultItemsComponent } from './search/results-list/result-items/result-items.component';
+import { ByLyricComponent } from './search/by-lyric/by-lyric.component';
+import { ByTrackComponent } from './search/by-track/by-track.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { AuthServicesService } from './services/auth-services.service';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
+    SearchComponent,
     ResultItemsComponent,
     ByLyricComponent,
-    ByTrackComponent
+    ByTrackComponent,
+    LogInComponent,
+    SignUpComponent,
+    LandingPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,10 @@ import { ByTrackComponent } from './home-page/by-track/by-track.component';
     FormsModule,
     MasonryModule
   ],
-  providers: [ApiServiceService],
+  providers: [
+    ApiServiceService,
+    AuthServicesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

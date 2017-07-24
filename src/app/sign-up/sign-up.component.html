@@ -1,0 +1,58 @@
+<div id="page-wrapper">
+
+			<!-- Header -->
+			<!-- Main -->
+				<article id="main">
+
+					<header class="special container">
+						<span class="icon fa-user-plus"></span>
+						<h2>Sign Up Now!</h2>
+					</header>
+
+					<!-- One -->
+						<section class="wrapper style4 special container 75%">
+
+							<!-- Content -->
+								<div class="content">
+									<p class="alert alert-danger" *ngIf="error"> {{error}} </p>
+									<form>
+										<div class="row 50%">
+											<div class="12u">
+                        <label for=""> Username </label>
+												<input [(ngModel)]="newUser.username" type="text" name="name" placeholder="someUsername27" />
+											</div>
+										</div>
+										<div class="row 50%">
+											<div class="12u">
+                        <label> Password </label>
+												<input [(ngModel)]="newUser.password" type="password" name="subject" placeholder="********" />
+											</div>
+										</div>
+
+										<div class="row 50%">
+											<div class="12u">
+                        <label> Confirm Password </label>
+												<input [(ngModel)]="newUser.confirm" type="password" name="subject" placeholder="********" />
+											</div>
+										</div>
+
+										<p class="alert alert-success" *ngIf="isSuccessful"> Sign up Sucessful! Redirecting to Home </p>
+
+										<div class="row">
+											<div class="12u">
+												<ul class="buttons">
+													<li><input (click) = "signUp()" type="submit" class="special" value="Sign Up" /></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								</div>
+
+						</section>
+
+				</article>
+
+			<!-- Footer -->
+
+
+		</div>

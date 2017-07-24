@@ -22,4 +22,8 @@ export class ApiServiceService {
     return this.http.post(this.baseURL+"api/findtracks/", userInput).map(
       (res) => res.json())
   }
+
+  getTopTracks() {
+    return this.http.get(this.baseURL + "api/top-tracks").map(res => res.json())
+  }
 }

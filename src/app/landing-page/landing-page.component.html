@@ -1,0 +1,75 @@
+
+			<!-- Banner -->
+				<section class="home-banner" id="banner">
+
+					<div class="inner">
+
+						<header>
+							<h2>What's That
+              <br />
+              Song?</h2>
+						</header>
+						<p> Forgot a song name? Find songs
+						<br />
+						by either lyrics, artist, or track
+						<br />
+						<footer>
+							<ul class="buttons vertical">
+								<li><a href="#main" class="button fit scrolly">Tell Me More</a></li>
+							</ul>
+						</footer>
+
+					</div>
+
+				</section>
+
+			<!-- Main -->
+				<article id="main">
+
+					<header class="special container">
+						<span class="icon fa-bar-chart-o"></span>
+						<h2>With this application you can easily find music
+						<br />
+						you've forgotten, and save it in, one convient, place.</h2>
+						<p>Using the MusixMatch API, you can look up a song using only a line of lyrics
+						<br />
+						from any given song. You can also search song by artist and track name.
+						<br />
+						By signing up you can save these songs, allowing you to easily find and look up your favorites.</p>
+            <ul class="buttons">
+              <li><a [routerLink]="['/search']" class="button"> Start Searching Now! </a></li>
+              <p class="or"> Or... </p>
+              <li><a [routerLink]="['/signup']" href="#" class="button"> Sign Up </a></li>
+            </ul>
+
+
+					</header>
+
+					<section class="wrapper style3 container special">
+
+					<h2> Top Tracks in the US </h2>
+
+					<masonry [options]="myOptions" data-masonry='{ "horizontalOrder": true}'>
+						<div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
+
+						<masonry-brick class="brick col-xs-12 col-sm-6 col-md-4 grid-item" *ngFor="let oneSong of topTracks">
+							<li class="song-info">
+
+								<div class="song-text">
+									<h3> "{{ oneSong.track.track_name}}" </h3>
+									<h4> -{{oneSong.track.artist_name}} </h4>
+									<!-- <h4 *ngIf="oneSong.track.primary_genres.music_genre_list.length > 0"> {{oneSong.track.primary_genres.music_genre_list[0].music_genre.music_genre_name}} </h4> -->
+
+									<a [href]="oneSong.track.track_share_url" target="_blank"> Lyrics </a><br>
+									<a class='youtubeLink' href="https://www.youtube.com/results?search_query={{ oneSong.track.track_name}} by {{oneSong.track.artist_name}}" target="_blank"> Find on Youtube </a><br>
+									<a href="https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Ddigital-music&field-keywords={{ oneSong.track.track_name}} by {{oneSong.track.artist_name}}" target="_blank"> Get it On Amazon </a><br>
+
+									<button class='button'> Add to Favorites </button>
+								</div>
+							</li>
+						</masonry-brick>
+					</masonry>
+				</section>
+
+
+					<!-- One -->

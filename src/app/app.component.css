@@ -1,0 +1,19 @@
+.login {
+  padding: 5px
+}
+
+#dLabel {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.dropdown-menu {
+  color: black;
+  padding: 20px;
+  width: 300px;
+}
+
+h4 {
+  margin: 0;
+  text-align: center;
+}
