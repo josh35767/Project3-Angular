@@ -16,6 +16,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthServicesService } from './services/auth-services.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HeaderComponent } from './header/header.component';
+import { SavedComponent } from './saved/saved.component';
+import { ResultComponent } from './search/result/result.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { HeaderComponent } from './header/header.component';
     LogInComponent,
     SignUpComponent,
     LandingPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    SavedComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

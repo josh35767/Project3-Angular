@@ -19,12 +19,14 @@ export class AppComponent {
 
   constructor(
     private api: ApiServiceService,
-    private auth: AuthServicesService
+    private auth: AuthServicesService,
+
   ) {}
 
   ngOnInit() {
-
+    
   }
+
 
   logout() {
     this.auth.logout()
@@ -37,12 +39,12 @@ export class AppComponent {
     this.auth.checklogin()
       .then((userInfo) => {
         this.isLoggedIn = true;
-        alert(userInfo);
+
         this.userInfo = userInfo;
       })
       .catch((err) => {
         this.isLoggedIn = false;
-        alert("Not Logged In")
+
       })
   }
 

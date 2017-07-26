@@ -10,6 +10,7 @@ import { AuthServicesService } from '../services/auth-services.service';
 export class LogInComponent implements OnInit {
   username: string = "";
   password: string = "";
+  user: any;
 
   error: string = "";
   isSuccessful: boolean = false;
@@ -24,6 +25,7 @@ export class LogInComponent implements OnInit {
       .then(() => {
         this.router.navigate(['']);
       })
+      .catch(() => {})
   }
 
   logIn() {
@@ -32,7 +34,7 @@ export class LogInComponent implements OnInit {
         this.error = "";
         this.isSuccessful = true;
         setTimeout(() => {
-          this.router.navigate([''])
+          this.router.navigate(['/search'])
         }, 2000)
 
       })

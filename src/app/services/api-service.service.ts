@@ -26,4 +26,33 @@ export class ApiServiceService {
   getTopTracks() {
     return this.http.get(this.baseURL + "api/top-tracks").map(res => res.json())
   }
+
+
+  saveSong(songToSave) {
+    return this.http.post(
+      this.baseURL+"api/save-song",
+      {
+        songId: songToSave.songId,
+        songArtist: songToSave.songArtist,
+        songTitle: songToSave.songTitle,
+        artistId: songToSave.artistId,
+        lyricUrl: songToSave.lyricUrl
+      },
+    { withCredentials: true })
+    .toPromise()
+    .then(res => res.json())
+  }
+
+  getSongById(selectedId) {
+    return this.http.get(this.baseURL+"api/song-by-id/"+selectedId)
+      .toPromise()
+      .then(res => res.json())
+  }
+
+  findRelated(artistId) {
+    return this.http.get(this.baseURL+"api/find-related/"+artistId)
+      .toPromise()
+      .then(res => res.json())
+  }
+
 }

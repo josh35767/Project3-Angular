@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AuthServicesService {
+
+  private loggedInSource = new Subject<any>();
+
+  loggedIn$ = this.loggedInSource.asObservable();
 
   constructor(
     private http: Http
@@ -23,6 +28,10 @@ export class AuthServicesService {
     )
     .toPromise()
     .then(res => res.json())
+    .then((userInfo) => {
+      this.logInStatus(userInfo);
+      return userInfo;
+    });
 }
 
 login(theUsername, thePassword) {
@@ -37,7 +46,11 @@ login(theUsername, thePassword) {
       { withCredentials: true }
     )
     .toPromise()
-    .then(res => res.json());
+    .then(res => res.json())
+    .then((userInfo) => {
+      this.logInStatus(userInfo);
+      return userInfo;
+    });
 }
 
 logout() {
@@ -48,17 +61,29 @@ logout() {
       { withCredentials: true }
     )
     .toPromise()
-    .then(res => res.json());
+    .then(res => res.json())
+    .then((userInfo) =>{
+      this.logInStatus(false);
+      return userInfo;
+    });
 }
 
-checklogin() {
-  return this.http
-    .get(
-      'http://localhost:3000/api/checklogin',
-      { withCredentials: true }
-    )
-    .toPromise()
-    .then(res => res.json());
-}
+  checklogin() {
+    return this.http
+      .get(
+        'http://localhost:3000/api/checklogin',
+        { withCredentials: true }
+      )
+      .toPromise()
+      .then(res => res.json())
+      .then((userInfo) => {
+        this.logInStatus(userInfo);
+        return userInfo;
+      });
+  }
+
+  logInStatus(userStatus) {
+    this.loggedInSource.next(userStatus);
+  }
 
 }

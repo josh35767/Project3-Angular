@@ -1,29 +1,24 @@
 <header id="header" class="reveal">
-  <h1 id="logo"><a [routerLink]="['']">What's That Song</a></h1>
+  <h1 id="logo"><a [routerLink]="['']">Musicorum</a></h1>
 
   <nav id="nav">
 
     <ul>
-      <li class="current"><a [routerLink]="['']">Welcome</a></li>
-      <li *ngIf="!isLoggedIn">
-        <a [routerLink]="['login']"> Log In </a>
-      </li>
+      <li><a [routerLink]="['']">Home</a></li>
+      <li><a [routerLink]="['/search']"> Search </a></li>
       <li class="submenu">
 
-        <a href="#">Layouts</a>
+        <a *ngIf = "!isLoggedIn" href="#">Sign Up / Login </a>
         <ul>
-          <li><a href="left-sidebar.html">Left Sidebar</a></li>
-          <li><a href="right-sidebar.html">Right Sidebar</a></li>
-          <li><a href="no-sidebar.html">No Sidebar</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a *ngIf = "!isLoggedIn" [routerLink]="['login']"> Log In </a></li>
+          <li><a *ngIf = "!isLoggedIn" [routerLink]="['signup']">Sign Up</a></li>
         </ul>
       </li>
-      <li><a [routerLink]="['signup']" class="button special">Sign Up</a></li>
-      <li>
+      <li *ngIf="isLoggedIn">
         <a (click)="logout()" href="#0"> Log Out </a>
       </li>
-      <li>
-        <a (click)="checklogin()" href="#"> Logged In? </a>
+      <li *ngIf="isLoggedIn">
+        <a [routerLink]="['saved']" href="#"> Saved Songs </a>
       </li>
     </ul>
 

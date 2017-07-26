@@ -13,6 +13,7 @@ export class SignUpComponent implements OnInit {
     password: "",
     confirm: ""
   };
+  user: any;
 
   error: string;
   isSuccessful: boolean = false;

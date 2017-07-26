@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../services/api-service.service';
 import { MasonryModule, MasonryOptions } from 'angular2-masonry';
+import { AuthServicesService } from '../services/auth-services.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,27 +10,51 @@ import { MasonryModule, MasonryOptions } from 'angular2-masonry';
 })
 export class SearchComponent implements OnInit {
   newList = [];
+  isLoggedIn;
   display = 'lyricSearch';
+  user: any;
+  message;
 
-  title = 'app';
   searchTerm: string;
   ngAfterViewInit() {
        window.scrollTo(0, 0);
    }
 
   ngOnInit() {
+    this.auth.checklogin()
+      .then((user) => {
+        this.user = user;
+      })
+      .catch((err) => {
+        this.message = err;
+      });
+
+    this.auth.loggedIn$.subscribe((userStatus) => {
+      if (userStatus) {
+        this.isLoggedIn = true;
+        this.user = userStatus;
+      } else {
+        this.isLoggedIn = false;
+        this.user = null;
+      }
+    });
 
   }
 
-  constructor(private api: ApiServiceService) {}
+  constructor(
+    private api: ApiServiceService,
+    private auth: AuthServicesService
+  ) {}
 
   displayResults(songArray) {
     this.newList = songArray;
     setTimeout(() => {
       location.href = "/search#results";
-    }, 100); 
+    }, 100);
 
   }
+
+  //Changes if page searching by track/artist or by lyric
 
   changeSearch(swapTo) {
     if(swapTo === 'lyricSearch') {
@@ -39,6 +64,9 @@ export class SearchComponent implements OnInit {
       this.display = 'trackSearch'
     }
   }
+
+
+
 
   public myOptions: MasonryOptions = {
     itemSelector: '.grid-item',

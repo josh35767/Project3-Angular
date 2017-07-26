@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../services/api-service.service';
-
+import { AuthServicesService } from '../services/auth-services.service';
 import { AngularMasonry, MasonryOptions } from 'angular2-masonry';
 
 @Component({
@@ -11,28 +11,47 @@ import { AngularMasonry, MasonryOptions } from 'angular2-masonry';
 })
 export class LandingPageComponent implements OnInit {
   topTracks = [];
+  isLoggedIn: boolean;
+  user: any;
+  message;
 
 
   constructor(
     private api: ApiServiceService,
-    private masonry: AngularMasonry
+    private masonry: AngularMasonry,
+    private auth: AuthServicesService
   ) { }
 
-  ngAfterViewInit() {
-      this.masonry.layoutComplete.subscribe(() => {
-        console.log('layout');
-      });
-  }
 
   ngOnInit() {
-    this.getTopTracks()
+    this.getTopTracks();
+    this.auth.checklogin()
+      .then((user) => {
+        this.user = user;
+      })
+      .catch((err) => {
+        this.message = err;
+      });
+
+      this.auth.loggedIn$.subscribe((userStatus) => {
+        if (userStatus) {
+          if (this.isLoggedIn) {
+            return;
+          }
+          this.isLoggedIn = true;
+          this.user = userStatus;
+        } else {
+          this.isLoggedIn = false;
+          this.user = null;
+        }
+      });
   }
 
   getTopTracks() {
     this.api.getTopTracks()
       .subscribe((tracks) => {
-        console.log(JSON.parse(tracks));
         this.topTracks = JSON.parse(tracks).message.body.track_list;
+        console.log(this.topTracks);
       })
   }
 
