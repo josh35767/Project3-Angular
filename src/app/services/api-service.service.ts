@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { URLSearchParams } from "@angular/http";
+import { environment } from '../../environments/environment';
 import * as xml2js from 'xml2js';
 
 import 'rxjs/add/operator/toPromise';
@@ -9,7 +10,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ApiServiceService {
   songList = [];
-  baseURL = "http://localhost:3000/";
+  baseURL = environment.apiBase;
 
   constructor(private http: Http) { }
 

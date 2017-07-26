@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
+import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -14,10 +15,12 @@ export class AuthServicesService {
     private http: Http
   ) { }
 
+  baseURL = environment.apiBase;
+
   signup(theUsername, thePassword) {
   return this.http
     .post(
-      'http://localhost:3000/api/signup',
+      this.baseURL+'api/signup',
       {
         signupUsername: theUsername,
         signupPassword: thePassword
@@ -37,7 +40,7 @@ export class AuthServicesService {
 login(theUsername, thePassword) {
   return this.http
     .post(
-      'http://localhost:3000/api/login',
+      this.baseURL+'api/login',
       {
         loginUsername: theUsername,
         loginPassword: thePassword
@@ -56,7 +59,7 @@ login(theUsername, thePassword) {
 logout() {
   return this.http
     .post(
-      'http://localhost:3000/api/logout',
+      this.baseURL+'api/logout',
       {},
       { withCredentials: true }
     )
@@ -71,7 +74,7 @@ logout() {
   checklogin() {
     return this.http
       .get(
-        'http://localhost:3000/api/checklogin',
+        this.baseURL+'api/checklogin',
         { withCredentials: true }
       )
       .toPromise()
