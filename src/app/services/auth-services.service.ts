@@ -85,6 +85,21 @@ logout() {
       });
   }
 
+  removeSong(trackId) {
+    return this.http.post(
+      this.baseURL+"api/remove-song",
+      {songId: trackId},
+      {withCredentials: true}
+    )
+    .toPromise()
+    .then(res => res.json())
+    .then((userInfo) => {
+      this.logInStatus(userInfo);
+      return userInfo;
+    });
+  }
+
+
   logInStatus(userStatus) {
     this.loggedInSource.next(userStatus);
   }

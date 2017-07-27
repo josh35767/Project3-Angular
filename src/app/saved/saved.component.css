@@ -5,3 +5,10 @@ h2 {
 .wrapper.style4 {
     padding: 2em;
 }
+
+.content p {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 5px;
+  line-height: 2em;
+}

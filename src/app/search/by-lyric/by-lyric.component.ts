@@ -8,6 +8,7 @@ import { ApiServiceService } from '../../services/api-service.service';
 })
 export class ByLyricComponent implements OnInit {
   songList = [];
+  searchTerm;
   @Output() onSearch = new EventEmitter<any>();
   @Output() onSwap = new EventEmitter<any>();
 

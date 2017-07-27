@@ -10,7 +10,7 @@ import { ApiServiceService } from '../../services/api-service.service';
 export class ResultComponent implements OnInit {
   user: any;
   message: any;
-  saveMessage: String;
+  saveMessage: String = "Add to favorites";
   isLoggedIn: boolean;
   successMessageClass: String;
   successButtonClass: String;
@@ -53,15 +53,14 @@ export class ResultComponent implements OnInit {
         artistId: songToSave.artist_id,
         lyricUrl: songToSave.track_share_url
       }
-      console.log(newSong);
 
       this.api.saveSong(newSong)
         .then((updated) => {
-          this.saveMessage = "Song successfully saved.";
+          this.saveMessage = "Song saved.";
           this.successButtonClass = "success-button";
           this.successMessageClass = "success-message";
           setTimeout(() => {
-            this.saveMessage = "";
+            this.saveMessage = "Add to favorites.";
             this.successButtonClass = "";
             this.successMessageClass = "";
           }, 2000)
@@ -72,7 +71,7 @@ export class ResultComponent implements OnInit {
           this.successButtonClass = "error-button";
           this.successMessageClass = "error-message";
           setTimeout(() => {
-            this.saveMessage = "";
+            this.saveMessage = "Add to favorites.";
             this.successButtonClass = "";
             this.successMessageClass = "";
           }, 2000)

@@ -1,0 +1,6 @@
+<div>
+  <h2> Suggested Artists </h2>
+  <div *ngFor = "let oneArtist of relatedArray">
+    <a [routerLink]="['/artist', oneArtist.artist.artist_id]"> {{oneArtist.artist.artist_name}} </a>
+  </div>
+</div>

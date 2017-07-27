@@ -18,6 +18,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HeaderComponent } from './header/header.component';
 import { SavedComponent } from './saved/saved.component';
 import { ResultComponent } from './search/result/result.component';
+import { SavedResultsComponent } from './saved/saved-results/saved-results.component';
+import { RelatedComponent } from './saved/related/related.component';
+import { ArtistComponent } from './artist/artist.component';
+import { CountryCodePipe } from './pipes/country-code.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { ResultComponent } from './search/result/result.component';
     LandingPageComponent,
     HeaderComponent,
     SavedComponent,
-    ResultComponent
+    ResultComponent,
+    SavedResultsComponent,
+    RelatedComponent,
+    ArtistComponent,
+    CountryCodePipe
   ],
   imports: [
     BrowserModule,

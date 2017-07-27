@@ -18,7 +18,7 @@
 			<h2>Your Results </h2>
 			<h3 *ngIf="newList.length <= 0"> --- No Songs Found --- </h3>
 
-			<masonry  [options]="myOptions" data-masonry='{ "horizontalOrder": true}'>
+			<masonry  [options]="myOptions">
 				<div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
 				<div *ngFor="let oneSong of newList">
 					<app-result [songInfo]="oneSong"></app-result>

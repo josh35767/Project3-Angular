@@ -5,6 +5,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SavedComponent } from './saved/saved.component';
+import { ArtistComponent } from './artist/artist.component';
 
 
 
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'saved',
     component: SavedComponent
+  },
+  {
+    path: 'artist/:id',
+    component: ArtistComponent
   }
 ];
 

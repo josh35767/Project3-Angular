@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ApiServiceService {
   songList = [];
+
   baseURL = environment.apiBase;
 
   constructor(private http: Http) { }
@@ -54,6 +55,18 @@ export class ApiServiceService {
     return this.http.get(this.baseURL+"api/find-related/"+artistId)
       .toPromise()
       .then(res => res.json())
+  }
+
+  getArtistInfo(artistId) {
+    return this.http.get(this.baseURL+"api/get-artist/"+artistId)
+      .toPromise()
+      .then(res => res.json());
+  }
+
+  getArtistTop(artistId) {
+    return this.http.get(this.baseURL+"api/get-artist-top/"+artistId)
+      .toPromise()
+      .then(res => res.json());
   }
 
 }
