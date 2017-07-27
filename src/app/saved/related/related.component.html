@@ -1,5 +1,6 @@
 <div>
   <h2> Suggested Artists </h2>
+  <p *ngIf="relatedArray.length === 0"> No suggested artists yet. <br> Continue saving songs to get suggestions! </p>
   <div *ngFor = "let oneArtist of relatedArray">
     <a [routerLink]="['/artist', oneArtist.artist.artist_id]"> {{oneArtist.artist.artist_name}} </a>
   </div>

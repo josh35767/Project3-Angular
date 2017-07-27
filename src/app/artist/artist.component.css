@@ -1,8 +1,13 @@
 .wrapper.style3 {
-  padding-top: 2em !important;
-  background-color: #fcfcfc;
+  background-color: transparent !important;
+  border-top: none;
 }
 
 i {
-  font-style: italic;  
+  font-style: italic;
+}
+
+h3, h4 {
+  display: inline-block;
+  margin-right: 50px;
 }

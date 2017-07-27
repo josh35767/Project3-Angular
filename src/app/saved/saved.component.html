@@ -13,6 +13,8 @@
 		                Can't listen to a song quite yet? Want to make sure you find a specific song later?
 		                <br>
 		                Just add it to your favorites, and you can find them all here.
+										<br>
+										To the left are suggested artists based on your current favorites.
 		            </p>
 							</div>
 
@@ -23,22 +25,22 @@
 
 
 					<!-- One -->
-						<section class="wrapper style4 container">
+						<section class="wrapper style3 container">
 
 							<!-- Content -->
 								<div class="content">
 									<h2> Saved Songs </h2>
-										<p *ngIf="!user.favorites"> No Saved Songs, start browsing to save songs. </p>
-									<masonry class="masonry-container" [options]="myOptions">
-										<div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
+									<div *ngIf="user.favorites">
+										<p *ngIf="!user.favorites.length > 0 "> No Saved Songs, start browsing to save songs. </p>
+										<masonry class="masonry-container" [options]="myOptions">
+											<div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
 
+											<div  *ngFor="let oneSong of user.favorites">
+												<app-saved-results (onSongDelete)="setUser($event)" [oneSong]="oneSong"></app-saved-results>
+											</div>
 
-										<div  *ngFor="let oneSong of user.favorites">
-											<app-saved-results (onSongDelete)="setUser($event)" [oneSong]="oneSong"></app-saved-results>
-										</div>
-
-									</masonry>
-
+										</masonry>
+									</div>
 								</div>
 
 						</section>

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { AuthServicesService } from '../../services/auth-services.service';
 import { ApiServiceService } from '../../services/api-service.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-result',
@@ -14,12 +16,14 @@ export class ResultComponent implements OnInit {
   isLoggedIn: boolean;
   successMessageClass: String;
   successButtonClass: String;
+  url: String;
 
   @Input() songInfo: any;
 
   constructor(
     private api: ApiServiceService,
-    private auth: AuthServicesService
+    private auth: AuthServicesService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -40,6 +44,10 @@ export class ResultComponent implements OnInit {
         this.user = null;
       }
     });
+
+    this.route.url.subscribe((url) => {
+      this.url = url[0].path;
+    })
   }
 
 

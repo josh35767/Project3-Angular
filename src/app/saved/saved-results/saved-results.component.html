@@ -3,12 +3,13 @@
 
     <div class="song-text">
       <h3> "{{ oneSong.songTitle}}" </h3>
-      <h4> -{{oneSong.songArtist}} </h4>
+      <h5> -{{oneSong.songArtist}} </h5>
       <!-- <h4 *ngIf="oneSong.track.primary_genres.music_genre_list.length > 0"> {{oneSong.track.primary_genres.music_genre_list[0].music_genre.music_genre_name}} </h4> -->
 
       <a [href]="oneSong.lyricUrl" target="_blank"> Lyrics </a><br>
       <a class='youtubeLink' href="https://www.youtube.com/results?search_query={{ oneSong.songTitle}} by {{oneSong.songArtist}}" target="_blank"> Find on Youtube </a><br>
       <a href="https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Ddigital-music&field-keywords={{ oneSong.songTitle}} by {{oneSong.songArtist}}" target="_blank"> Get it On Amazon </a><br>
+      <a [routerLink]="['/artist', oneSong.artistId]"> Artist Page </a>
       <button (click)="removeSong(oneSong.songId)" class='button {{successButtonClass}}'> <i class="fa fa-times" aria-hidden="true"></i> Remove </button>
     </div>
   </li>
