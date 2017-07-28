@@ -31,7 +31,19 @@ a {
   color: white;
   text-transform: uppercase;
   font-size: .7em;
+  transition-duration: 0.4s;
 }
+
+a:hover {
+  background-color: #89c6be;
+  width: 62%;
+  border-color: #89c6be;
+  text-decoration: none;
+}
+a:active, a:focus, a:hover {
+  text-decoration: none !important;
+}
+
 h3 {
   font-size: 1em;
   margin-bottom: 10px;

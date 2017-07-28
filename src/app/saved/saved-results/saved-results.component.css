@@ -25,3 +25,10 @@ h5 {
   line-height: 2.5em;
   min-width: 16em;
 }
+
+a:hover {
+  background-color: #89c6be;
+  width: 62%;
+  border-color: #89c6be;
+  text-decoration: none;
+}

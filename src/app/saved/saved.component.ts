@@ -20,7 +20,6 @@ export class SavedComponent implements OnInit {
   relatedIdArray = [];
   relatedArray = [];
   songList = [];
-  i = 0;
 
 
 

@@ -5,3 +5,7 @@
 small {
   color: white;
 }
+
+a:active, a:focus, a:hover {
+  text-decoration: none !important;
+}

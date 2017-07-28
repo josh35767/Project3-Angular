@@ -12,6 +12,10 @@
   background-color: #fcfcfc;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 
 /*
 @media (max-width: 550px) {

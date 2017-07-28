@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ApiServiceService } from './services/api-service.service';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { ResultItemsComponent } from './search/results-list/result-items/result-items.component';
 import { ByLyricComponent } from './search/by-lyric/by-lyric.component';
 import { ByTrackComponent } from './search/by-track/by-track.component';
 import { LogInComponent } from './log-in/log-in.component';
@@ -27,7 +26,6 @@ import { CountryCodePipe } from './pipes/country-code.pipe';
   declarations: [
     AppComponent,
     SearchComponent,
-    ResultItemsComponent,
     ByLyricComponent,
     ByTrackComponent,
     LogInComponent,

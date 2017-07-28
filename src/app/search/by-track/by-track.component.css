@@ -9,3 +9,7 @@ small {
 h2 {
   line-height: 1.3em;
 }
+
+a:active, a:focus, a:hover {
+  text-decoration: none !important;
+}
